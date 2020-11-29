@@ -1,0 +1,88 @@
+#DIP-MIN-PROJECT
+#IMAGE  ENHANCEMENT  TECHNIQUES
+
+
+#LOG TRANSFORM
+
+def log_transform():
+    image = cv2.imread('C:\\dip\\mountain.png') 
+
+    # Apply log transformation method 
+    c = 255/(np.log(1 + np.max(image)))
+    log_image = c * np.log(1 + image)
+
+    
+    log_image = np.array(log_image, dtype = np.uint8) 
+
+    # Display both images 
+    plt.imshow(image) 
+    plt.show() 
+    plt.imshow(log_image) 
+    plt.show() 
+log_transform()
+
+
+#IMAGE  NEGATION
+
+def  image_negative():
+    import cv2 
+    import matplotlib.pyplot as plt 
+
+    # Read an image 
+    img_bgr = cv2.imread('C:\\dip\\mountain.png', 1) 
+    plt.imshow(img_bgr) 
+    plt.show() 
+    
+    # Negate the original image 
+    img_neg = 1 - img_bgr 
+    plt.imshow(img_neg) 
+    plt.show() 
+image_negative()
+
+
+
+
+#POWER TRANSFORM
+
+def power_law():
+    import cv2 
+    import numpy as np 
+
+    # Open the image. 
+    img = cv2.imread('C:\\dip\\mountain.png') 
+
+    # Trying 4 gamma values. 
+    for gamma in [0.1, 0.5, 1.2, 2.2]: 
+
+        # Apply gamma correction. 
+        gamma_corrected = np.array(255*(img / 255) ** gamma, dtype = 'uint8') 
+
+        plt.imshow( gamma_corrected) 
+        plt.show()
+power_law()
+
+
+
+#HISTOGRAM  EQUALIZATION
+def hist_equal():
+    import cv2 
+  
+    # import Numpy 
+    import numpy as np 
+
+    # read a image using imread 
+    img = cv2.imread('C:\\dip\\mountain.png', 1) 
+    plt.imshow(img) 
+    plt.show()
+    img = cv2.imread('C:\\dip\\mountain.png', 0) 
+
+    # creating a Histograms Equalization 
+    # of a image using cv2.equalizeHist() 
+    equ = cv2.equalizeHist(img) 
+
+    plt.imshow(equ) 
+    plt.show()
+hist_equal()
+
+    
+    
